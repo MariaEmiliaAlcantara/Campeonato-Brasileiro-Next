@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "0.16.3"
+  },
+  "scripts": {
+    "server": "json-server --watch campeonato-brasileiro.json --port 3001"
+  }
+}
