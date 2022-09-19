@@ -7,15 +7,13 @@ import { IDataYear, IPartida } from "../interfaces/interfaces";
 
 export default function Home() {
   const [filterYear, setFilterYear] = useState(2003);
-  const [data, setData] = useState<IDataYear[]>();
+  const [data, setData] = useState<IDataYear>();
 
   useEffect(() => {
     fetch(`http://localhost:3001/${filterYear}`).then((resp) =>
       resp
         .json()
-        .then((data: IDataYear[]) =>
-          data.filter((item) => item.numero === data.length)
-        )
+        .then((data: IDataYear[]) => data[data.length - 1])
         .then((data) => setData(data))
     );
   }, []);
@@ -24,16 +22,14 @@ export default function Home() {
     fetch(`http://localhost:3001/${filterYear}`).then((resp) =>
       resp
         .json()
-        .then((data: IDataYear[]) =>
-          data.filter((item) => item.numero === data.length)
-        )
+        .then((data: IDataYear[]) => data[data.length - 1])
         .then((data) => setData(data))
     );
   }, [filterYear]);
 
-  function dataProcessing(data) {
+  function dataProcessing(data: IDataYear) {
     if (data) {
-      const partidas: IPartida[] = data[0].partidas;
+      const partidas: IPartida[] = data.partidas;
 
       let array = [];
 
@@ -54,7 +50,7 @@ export default function Home() {
 
   const dataProcessed = dataProcessing(data);
 
-  const handleFilter = (filter) => {
+  const handleFilter = (filter: number) => {
     setFilterYear(filter);
   };
 

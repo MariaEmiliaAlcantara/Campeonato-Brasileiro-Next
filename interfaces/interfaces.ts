@@ -43,3 +43,8 @@ export interface ISSGprops {
     dataYearFinal;
   };
 }
+
+export interface IDataProcessed {
+  time: string,
+  pontuacao: IPontuacaoGeral
+}
