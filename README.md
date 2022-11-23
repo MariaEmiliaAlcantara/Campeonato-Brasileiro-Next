@@ -26,3 +26,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 📷 Telas do aplicativo
 
+https://user-images.githubusercontent.com/104785776/203575172-04498e2e-97fd-48be-bc6e-f5816c62ad71.mp4
+
+
