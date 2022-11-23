@@ -4,6 +4,21 @@ import { CardArea } from "../components/CardArea/CardArea";
 import { Filter } from "../components/Filter/Filter";
 import { Header } from "../components/Header/Header";
 import { IDataYear, IPartida } from "../interfaces/interfaces";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+`;
+
+const Main = styled.main`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+  height: 90vh;
+`;
 
 export default function Home() {
   const [filterYear, setFilterYear] = useState(2003);
@@ -55,12 +70,14 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <Wrapper>
       <Header />
-      <Filter handleFilter={handleFilter} />
-      <CardArea>
-        <Table data={dataProcessed} />
-      </CardArea>
-    </div>
+      <Main>
+        <Filter handleFilter={handleFilter} filterYear={filterYear} />
+        <CardArea>
+          <Table data={dataProcessed} />
+        </CardArea>
+      </Main>
+    </Wrapper>
   );
 }

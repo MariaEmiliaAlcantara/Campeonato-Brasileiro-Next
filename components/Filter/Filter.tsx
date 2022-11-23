@@ -5,26 +5,62 @@ const years = [
 ];
 
 const WrapperFilter = styled.div`
+  width: 20%;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100px;
+  background-color: #242f37;
 `;
 
-export const Filter = ({ handleFilter }) => {
+const ButtonsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  font-size: 16px;
+  color: #94be1f;
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  height: 35px;
+  border-top: 1px solid rgb(112, 112, 112);
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:last-child {
+    border-bottom: 1px solid rgb(112, 112, 112);
+  }
+
+  &:hover {
+    font-size: 20px;
+  }
+`;
+
+const SelectedYear = styled.div`
+  font-size: 16px;
+  color: white;
+  margin-bottom: 1rem;
+`;
+
+export const Filter = ({ handleFilter, filterYear }) => {
   return (
     <WrapperFilter>
-      <label>
-        <select
-          name="filterYear"
-          id="filterYear"
-          onChange={(e) => handleFilter(e.target.value)}
-        >
-          {years.map((year, index) => (
-            <option key={index}>{year}</option>
-          ))}
-        </select>
-      </label>
+      <ButtonsDiv>
+        <SelectedYear>Campeonato de {filterYear}</SelectedYear>
+        {years.map((year) => (
+          <Button
+            key={year}
+            onClick={() => {
+              handleFilter(year);
+            }}
+          >
+            {year}
+          </Button>
+        ))}
+      </ButtonsDiv>
     </WrapperFilter>
   );
 };

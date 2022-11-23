@@ -2,14 +2,23 @@ import styled from "styled-components";
 import { IDataProcessed } from "../../interfaces/interfaces";
 
 const TableWrapper = styled.table`
-  width: 50vw;
+  width: 80%;
   text-align: center;
+  font-size: 0.85rem;
+  border-collapse: collapse;
+`;
+
+const TableHead = styled.thead`
+  color: #e7df7e;
+  background-color: #242f37;
+  height: 2rem;
+  font-size: 1rem;
 `;
 
 const Table: React.FC<{ data: IDataProcessed[] }> = ({ data }) => {
   return (
     <TableWrapper>
-      <thead>
+      <TableHead>
         <tr>
           <th>Colocação</th>
           <th>Time</th>
@@ -21,7 +30,7 @@ const Table: React.FC<{ data: IDataProcessed[] }> = ({ data }) => {
           <th>GC</th>
           <th>S</th>
         </tr>
-      </thead>
+      </TableHead>
       <tbody>
         {data &&
           data
